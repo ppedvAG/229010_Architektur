@@ -1,0 +1,12 @@
+https://www.amazon.de/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?keywords=clean+code&qid=1692185970&sprefix=clean+c%2Caps%2C95&sr=8-1
+
+https://www.amazon.de/pragmatische-Programmierer-Jubil%C3%A4umsausgabe-Andrew-Hunt/dp/3446463844/ref=sr_1_1?keywords=pragmatische+programmierer&qid=1692185868&sprefix=pragmatis%2Caps%2C97&sr=8-1
+
+
+
+DB Tools
+https://fishcodelib.com/index.htm
+https://www.connectionstrings.com/sqlite/
+
+tolle pattern Seite
+https://refactoring.guru/design-patterns/builder

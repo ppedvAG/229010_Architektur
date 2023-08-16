@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Model", "ppedv.CarRentalXPress.Model\ppedv.CarRentalXPress.Model.csproj", "{2DC8EE37-D4D1-488D-A011-6E09B82DA945}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Data.EfCore", "ppedv.CarRentalXPress.Data.EfCore\ppedv.CarRentalXPress.Data.EfCore.csproj", "{16570AB2-F9E2-495A-B52F-17596F4DAFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Data.EfCore.Tests", "ppedv.CarRentalXPress.Data.EfCore.Tests\ppedv.CarRentalXPress.Data.EfCore.Tests.csproj", "{910026B7-6FAC-4161-B659-DB2BD4ED09C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2DC8EE37-D4D1-488D-A011-6E09B82DA945}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC8EE37-D4D1-488D-A011-6E09B82DA945}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC8EE37-D4D1-488D-A011-6E09B82DA945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16570AB2-F9E2-495A-B52F-17596F4DAFAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16570AB2-F9E2-495A-B52F-17596F4DAFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16570AB2-F9E2-495A-B52F-17596F4DAFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16570AB2-F9E2-495A-B52F-17596F4DAFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910026B7-6FAC-4161-B659-DB2BD4ED09C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910026B7-6FAC-4161-B659-DB2BD4ED09C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910026B7-6FAC-4161-B659-DB2BD4ED09C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910026B7-6FAC-4161-B659-DB2BD4ED09C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

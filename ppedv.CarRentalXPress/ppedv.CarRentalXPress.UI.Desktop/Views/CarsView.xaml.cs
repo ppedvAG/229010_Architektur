@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ppedv.CarRentalXPress.UI.Desktop.ViewModels;
+using System.Windows.Controls;
 
 namespace ppedv.CarRentalXPress.UI.Desktop.Views
 {
@@ -10,7 +12,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop.Views
         public CarsView()
         {
             InitializeComponent();
-            
+            DataContext = App.Current.Services.GetService<CarsViewModel>();
         }
     }
 }

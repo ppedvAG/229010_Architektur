@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using ppedv.CarRentalXPress.Model;
 using ppedv.CarRentalXPress.Model.Contracts;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
@@ -41,10 +40,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
             SelectedCar = car;
         }
 
-        //todo KILL IT
-        public CarsViewModel() : this(new Data.EfCore.CarRentalXPressContextRepositoryAdapter("Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true"))
-        { }
-
+      
         public ObservableCollection<Car> CarList { get; set; }
 
         public ICommand SaveCommand { get; set; }

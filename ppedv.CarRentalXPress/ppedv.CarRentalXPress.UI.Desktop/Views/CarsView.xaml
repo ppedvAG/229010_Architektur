@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.Views"
+             xmlns:local="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.Views" xmlns:viewmodels="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodels:CarsViewModel/>
+    </UserControl.DataContext>
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top">
             <Button>Speichern</Button>
@@ -19,7 +22,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid/>
+            <DataGrid ItemsSource="{Binding CarList}"
+                      SelectedItem="{Binding SelectedCar}"/>
 
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
 
@@ -36,15 +40,27 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label>Hersteller</Label>
-                <TextBox Grid.Column="1"/>
+                <TextBox Grid.Column="1" Text="{Binding SelectedCar.Manufacturer}"/>
                 <Label Grid.Row="1">Modell</Label>
-                <TextBox Grid.Row="1" Grid.Column="1"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedCar.Model}"/>
                 <Label Grid.Row="2">Farbe</Label>
-                <TextBox Grid.Row="2" Grid.Column="1"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedCar.Color}"/>
                 <Label Grid.Row="3">Leistung (KW)</Label>
-                <TextBox Grid.Row="3" Grid.Column="1"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedCar.KW}"/>
                 <GroupBox Header="Vermietungen" Grid.Row="4" Grid.ColumnSpan="2">
-                    <ListBox/>
+                    <ListBox ItemsSource="{Binding SelectedCar.Rents}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding StartDate}"/>
+                                    <TextBlock></TextBlock>
+                                    <TextBlock Text="{Binding EndDate}"/>
+                                    <TextBlock></TextBlock>
+                                    <TextBlock Text="{Binding Customer.Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </GroupBox>
             </Grid>
         </Grid>

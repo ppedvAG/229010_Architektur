@@ -1,4 +1,6 @@
-﻿<Window x:Class="ppedv.CarRentalXPress.UI.Desktop.MainWindow"
+﻿<controls:AdonisWindow  
+        xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+        x:Class="ppedv.CarRentalXPress.UI.Desktop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +9,9 @@
         xmlns:views="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Datei">
@@ -27,11 +31,11 @@
         <StatusBar DockPanel.Dock="Bottom" Height="22" Background="LimeGreen"/>
 
         <TabControl>
-            <TabItem Header="Rents">
-                <RentsView xmlns="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.Views"/>
-            </TabItem>
             <TabItem Header="Cars">
                 <views:CarsView/>
+            </TabItem>
+            <TabItem Header="Rents">
+                <RentsView xmlns="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.Views"/>
             </TabItem>
             <TabItem Header="Customer">
                 <views:CustomersView/>
@@ -39,4 +43,4 @@
         </TabControl>
     </DockPanel>
     
-</Window>
+</controls:AdonisWindow>

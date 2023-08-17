@@ -6,11 +6,47 @@
              xmlns:local="clr-namespace:ppedv.CarRentalXPress.UI.Desktop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Viewbox>
-            <TextBlock>
-                🚗
-            </TextBlock>
-        </Viewbox>
-    </Grid>
+    <DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
+            <Button>Speichern</Button>
+            <Button>Neu</Button>
+            <Button>Löschen</Button>
+        </WrapPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid/>
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label>Hersteller</Label>
+                <TextBox Grid.Column="1"/>
+                <Label Grid.Row="1">Modell</Label>
+                <TextBox Grid.Row="1" Grid.Column="1"/>
+                <Label Grid.Row="2">Farbe</Label>
+                <TextBox Grid.Row="2" Grid.Column="1"/>
+                <Label Grid.Row="3">Leistung (KW)</Label>
+                <TextBox Grid.Row="3" Grid.Column="1"/>
+                <GroupBox Header="Vermietungen" Grid.Row="4" Grid.ColumnSpan="2">
+                    <ListBox/>
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </DockPanel>
 </UserControl>

@@ -21,13 +21,15 @@ string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Test
 //DI per AutoFac
 var containerBuilder = new ContainerBuilder();
 containerBuilder.Register(x => new CarRentalXPressContextRepositoryAdapter(conString)).As<IRepository>();
+containerBuilder.RegisterType<RentServices>().As<IRentServices>();
 var container = containerBuilder.Build();
 
 IRepository repo = container.Resolve<IRepository>();
 
 //manual injection
 //IRepository repo = new ppedv.CarRentalXPress.Data.EfCore.CarRentalXPressContextRepositoryAdapter(conString);
-var rentService = new RentServices(repo);
+//var rentService = new RentServices(repo);
+var rentService = container.Resolve<IRentServices>();
 
 var demoService = new DemoService(repo);
 demoService.CreateDemoDaten();
@@ -44,7 +46,7 @@ foreach (var car in repo.GetAll<Car>())
 }
 
 Console.WriteLine("Available Cars today:");
-foreach (var car in rentService.GetAvailableCars(DateTime.Now, "Heidelberg"))
+foreach (var car in rentService.GetAvailableCars(DateTime.Now.AddDays(3), "Heidelberg"))
 {
     Console.WriteLine($"{car.Manufacturer} {car.Model} {car.Color} {car.KW}");
 }

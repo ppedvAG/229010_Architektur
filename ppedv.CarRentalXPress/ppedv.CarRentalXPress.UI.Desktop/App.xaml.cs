@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ppedv.CarRentalXPress.Core;
 using ppedv.CarRentalXPress.Data.EfCore;
 using ppedv.CarRentalXPress.Model.Contracts;
 using ppedv.CarRentalXPress.UI.Desktop.ViewModels;
@@ -42,6 +43,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop
 
             services.AddSingleton<IRepository>(new CarRentalXPressContextRepositoryAdapter(conString));
             services.AddSingleton<CarsViewModel>();
+            services.AddSingleton<IRentServices, RentServices>();
 
             return services.BuildServiceProvider();
         }

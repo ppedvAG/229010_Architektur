@@ -3,7 +3,7 @@ using ppedv.CarRentalXPress.Model.Contracts;
 
 namespace ppedv.CarRentalXPress.Core
 {
-    public class RentServices
+    public class RentServices : IRentServices
     {
         private readonly IRepository repository;
 

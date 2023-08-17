@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
+using ppedv.CarRentalXPress.Core;
 using ppedv.CarRentalXPress.Model;
 using ppedv.CarRentalXPress.Model.Contracts;
 using System.Collections.ObjectModel;
@@ -12,7 +14,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
         private readonly IRepository repo;
         private Car selectedCar;
 
-        public CarsViewModel(IRepository repo)
+        public CarsViewModel(IRepository repo, IRentServices rentService)
         {
             this.repo = repo;
             CarList = new ObservableCollection<Car>(repo.GetAll<Car>());
@@ -21,11 +23,18 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
             SaveCommand = new RelayCommand(() => repo.SaveAll());
             NewCommand = new RelayCommand(UserWantsToAddNewCar);
             DeleteCommand = new RelayCommand(UserWantsToDeleteSelectedCar);
+            
+            //IRentServices rentService = App.Current.Services.GetService<IRentServices>();
+            ShowOnlyAvailableCarsCommand = new RelayCommand(() =>
+            {
+                CarList.Clear();
+                rentService.GetAvailableCars(new DateTime(2023,10,11), "Heidelberg").ToList().ForEach(car => CarList.Add(car));
+            });
         }
 
         private void UserWantsToDeleteSelectedCar()
         {
-            if(selectedCar!=null)
+            if (selectedCar != null)
             {
                 repo.Delete(selectedCar);
                 CarList.Remove(selectedCar);
@@ -40,12 +49,13 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
             SelectedCar = car;
         }
 
-      
+
         public ObservableCollection<Car> CarList { get; set; }
 
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand NewCommand { get; set; }
+        public ICommand ShowOnlyAvailableCarsCommand { get; set; }
 
         public Car SelectedCar
         {

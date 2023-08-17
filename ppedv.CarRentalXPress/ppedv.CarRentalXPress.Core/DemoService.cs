@@ -26,7 +26,7 @@ namespace ppedv.CarRentalXPress.Core
         }
 
         const string local = "de";
-        const int seed = 7;
+        const int seed = 5;
 
         public static IEnumerable<Car> GenerateCars(int count)
         {
@@ -52,7 +52,7 @@ namespace ppedv.CarRentalXPress.Core
         {
             var rentFaker = new Faker<Rent>(local).UseSeed(seed)
                 .RuleFor(r => r.OrderDate, f => f.Date.Past())
-                .RuleFor(r => r.StartDate, f => f.Date.Future())
+                .RuleFor(r => r.StartDate, f => f.Date.Soon())
                 .RuleFor(r => r.StartLocation, f => f.Address.City())
                 .RuleFor(r => r.EndDate, (f, r) => f.Date.Between(r.StartDate, r.StartDate.AddDays(7)))
                 .RuleFor(r => r.EndLocation, f => f.Address.City())

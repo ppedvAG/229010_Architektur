@@ -45,8 +45,11 @@
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedCar.Model}"/>
                 <Label Grid.Row="2">Farbe</Label>
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedCar.Color}"/>
-                <Label Grid.Row="3">Leistung (KW)</Label>
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedCar.KW}"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="3">
+                    <Label >Leistung (KW)  </Label>
+                    <TextBlock Text="{Binding PS}" />
+                </StackPanel>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding KW,UpdateSourceTrigger=PropertyChanged}"/>
                 <GroupBox Header="Vermietungen" Grid.Row="4" Grid.ColumnSpan="2">
                     <ListBox ItemsSource="{Binding SelectedCar.Rents}">
                         <ListBox.ItemTemplate>

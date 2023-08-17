@@ -3,9 +3,12 @@ using ppedv.CarRentalXPress.Core;
 using ppedv.CarRentalXPress.Data.EfCore;
 using ppedv.CarRentalXPress.Model;
 using ppedv.CarRentalXPress.Model.Contracts;
+using System.Globalization;
 using System.Reflection;
 
 Console.WriteLine("*** CarRentalXPress v0.1 ***");
+
+Thread.CurrentThread.CurrentCulture = new CultureInfo("de");
 
 string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true";
 
@@ -26,12 +29,18 @@ IRepository repo = container.Resolve<IRepository>();
 //IRepository repo = new ppedv.CarRentalXPress.Data.EfCore.CarRentalXPressContextRepositoryAdapter(conString);
 var rentService = new RentServices(repo);
 
+var demoService = new DemoService(repo);
+demoService.CreateDemoDaten();
 
 
 Console.WriteLine("All Cars:");
 foreach (var car in repo.GetAll<Car>())
 {
     Console.WriteLine($"{car.Manufacturer} {car.Model} {car.Color} {car.KW}");
+    foreach (var r in car.Rents.OrderBy(x => x.StartDate))
+    {
+        Console.WriteLine($"\t{r.StartDate.Date:d} [{r.StartLocation}] - {r.EndDate.Date:d} [{r.EndLocation}] {r.Customer.Name}");
+    }
 }
 
 Console.WriteLine("Available Cars today:");

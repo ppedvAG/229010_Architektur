@@ -1,6 +1,7 @@
 ﻿using ppedv.CarRentalXPress.Model;
 using ppedv.CarRentalXPress.Model.Contracts;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
 {
@@ -15,13 +16,17 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
         {
             this.repo = repo;
             CarList = new List<Car>(repo.GetAll<Car>());
+
+            SaveCommand = new SaveCommand(repo);
         }
 
         //todo KILL IT
-        public CarsViewModel() : this(new Data.EfCore.CarRentalXPressContextRepositoryAdapter("Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true"))
+        public CarsViewModel() : this(new Data.EfCore.CarRentalXPressContextRepositoryAdapter ("Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true"))
         { }
 
         public List<Car> CarList { get; set; }
+
+        public ICommand SaveCommand { get; set; }
 
         public Car SelectedCar
         {

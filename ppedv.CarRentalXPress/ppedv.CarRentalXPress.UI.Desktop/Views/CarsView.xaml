@@ -11,7 +11,7 @@
     </UserControl.DataContext>
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top">
-            <Button>Speichern</Button>
+            <Button Command="{Binding SaveCommand}" >Speichern</Button>
             <Button>Neu</Button>
             <Button>Löschen</Button>
         </WrapPanel>

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.CarRentalXPress.Core\ppedv.CarRentalXPress.Core.csproj" />
+    <ProjectReference Include="..\ppedv.CarRentalXPress.Data.EfCore\ppedv.CarRentalXPress.Data.EfCore.csproj" />
+    <ProjectReference Include="..\ppedv.CarRentalXPress.Model\ppedv.CarRentalXPress.Model.csproj" />
+  </ItemGroup>
+
+</Project>

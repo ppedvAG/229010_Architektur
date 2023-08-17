@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Core"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Core.Tests", "ppedv.CarRentalXPress.Core.Tests\ppedv.CarRentalXPress.Core.Tests.csproj", "{9CF8A2B8-D28C-44DE-B045-1C344D1A551A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.UI.DevConsole", "ppedv.CarRentalXPress.UI.DevConsole\ppedv.CarRentalXPress.UI.DevConsole.csproj", "{95D07359-824C-4BE0-983E-CE126FE76764}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9CF8A2B8-D28C-44DE-B045-1C344D1A551A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF8A2B8-D28C-44DE-B045-1C344D1A551A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF8A2B8-D28C-44DE-B045-1C344D1A551A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D07359-824C-4BE0-983E-CE126FE76764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D07359-824C-4BE0-983E-CE126FE76764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D07359-824C-4BE0-983E-CE126FE76764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D07359-824C-4BE0-983E-CE126FE76764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

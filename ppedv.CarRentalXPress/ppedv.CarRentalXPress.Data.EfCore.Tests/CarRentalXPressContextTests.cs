@@ -8,7 +8,7 @@ namespace ppedv.CarRentalXPress.Data.EfCore.Tests
 {
     public class CarRentalXPressContextTests
     {
-        string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true";
+        readonly string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true";
 
         [Fact]
         public void Can_create_Db()
@@ -19,6 +19,7 @@ namespace ppedv.CarRentalXPress.Data.EfCore.Tests
             var result = con.Database.EnsureCreated();
 
             Assert.True(result);
+            result.Should().BeTrue();
         }
 
         [Fact]
@@ -39,6 +40,7 @@ namespace ppedv.CarRentalXPress.Data.EfCore.Tests
             {
                 var loaded = con.Cars.Find(car.Id);
 
+                loaded.Should().BeEquivalentTo(car, x => x.IgnoringCyclicReferences());
                 loaded.Should().BeEquivalentTo(car, x => x.IgnoringCyclicReferences());
             }
 

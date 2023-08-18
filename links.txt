@@ -1,4 +1,5 @@
 
+https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/
 https://github.com/microsoft/TemplateStudio
 
 https://prismlibrary.com/docs/

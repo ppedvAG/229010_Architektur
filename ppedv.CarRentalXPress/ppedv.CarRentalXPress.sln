@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CarRentalXPress.Data.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CarRentalXPress.Data.EfCore.Tests", "ppedv.CarRentalXPress.Data.EfCore.Tests\ppedv.CarRentalXPress.Data.EfCore.Tests.csproj", "{910026B7-6FAC-4161-B659-DB2BD4ED09C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Core", "ppedv.CarRentalXPress.Core\ppedv.CarRentalXPress.Core.csproj", "{DCDD8C2E-6C2A-473C-8201-8C7BCAB23389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CarRentalXPress.Core", "ppedv.CarRentalXPress.Core\ppedv.CarRentalXPress.Core.csproj", "{DCDD8C2E-6C2A-473C-8201-8C7BCAB23389}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.Core.Tests", "ppedv.CarRentalXPress.Core.Tests\ppedv.CarRentalXPress.Core.Tests.csproj", "{9CF8A2B8-D28C-44DE-B045-1C344D1A551A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CarRentalXPress.Core.Tests", "ppedv.CarRentalXPress.Core.Tests\ppedv.CarRentalXPress.Core.Tests.csproj", "{9CF8A2B8-D28C-44DE-B045-1C344D1A551A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.UI.DevConsole", "ppedv.CarRentalXPress.UI.DevConsole\ppedv.CarRentalXPress.UI.DevConsole.csproj", "{95D07359-824C-4BE0-983E-CE126FE76764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CarRentalXPress.UI.DevConsole", "ppedv.CarRentalXPress.UI.DevConsole\ppedv.CarRentalXPress.UI.DevConsole.csproj", "{95D07359-824C-4BE0-983E-CE126FE76764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.UI.Desktop", "ppedv.CarRentalXPress.UI.Desktop\ppedv.CarRentalXPress.UI.Desktop.csproj", "{3863DE6C-0A0A-4297-A794-AF1CD504A0CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CarRentalXPress.UI.Desktop", "ppedv.CarRentalXPress.UI.Desktop\ppedv.CarRentalXPress.UI.Desktop.csproj", "{3863DE6C-0A0A-4297-A794-AF1CD504A0CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CarRentalXPress.UI.Web", "ppedv.CarRentalXPress.UI.Web\ppedv.CarRentalXPress.UI.Web.csproj", "{B4693E8C-AA50-4CBC-9AAA-4E055B5576CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{3863DE6C-0A0A-4297-A794-AF1CD504A0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3863DE6C-0A0A-4297-A794-AF1CD504A0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3863DE6C-0A0A-4297-A794-AF1CD504A0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4693E8C-AA50-4CBC-9AAA-4E055B5576CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4693E8C-AA50-4CBC-9AAA-4E055B5576CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4693E8C-AA50-4CBC-9AAA-4E055B5576CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4693E8C-AA50-4CBC-9AAA-4E055B5576CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

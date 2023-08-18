@@ -1,4 +1,13 @@
 
+https://my.visualstudio.com/
+
+https://www.telerik.com/download/fiddler
+https://my.visualstudio.com/
+
+https://grpc.io/
+https://betterprogramming.pub/graphql-from-excitement-to-deception-f81f7c95b7cf
+
+
 https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/
 https://github.com/microsoft/TemplateStudio
 

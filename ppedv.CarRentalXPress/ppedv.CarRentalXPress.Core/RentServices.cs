@@ -19,7 +19,7 @@ namespace ppedv.CarRentalXPress.Core
 
             // Get rented cars for the specified day and location from the repository
             IEnumerable<Car> rentedCarsForDayAndLocation = repository
-                .GetAll<Rent>()
+                .Query<Rent>()
                 .Where(rent =>
                     rent.StartDate.Date <= day.Date && rent.EndDate.Date >= day.Date &&
                     rent.StartLocation == location)

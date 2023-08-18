@@ -32,6 +32,11 @@ namespace ppedv.CarRentalXPress.Data.EfCore
             return con.Set<T>().Find(id);  
         }
 
+        public IQueryable<T> Query<T>() where T : Entity
+        {
+            return con.Set<T>();
+        }
+
         public int SaveAll()
         {
             return con.SaveChanges();

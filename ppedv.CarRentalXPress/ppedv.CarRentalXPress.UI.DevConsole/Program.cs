@@ -32,11 +32,11 @@ IRepository repo = container.Resolve<IRepository>();
 var rentService = container.Resolve<IRentServices>();
 
 var demoService = new DemoService(repo);
-demoService.CreateDemoDaten();
+//demoService.CreateDemoDaten();
 
 
 Console.WriteLine("All Cars:");
-foreach (var car in repo.GetAll<Car>())
+foreach (var car in repo.Query<Car>().Where(x => x.KW > 5).OrderBy(x => x.Color).ToList())
 {
     Console.WriteLine($"{car.Manufacturer} {car.Model} {car.Color} {car.KW}");
     foreach (var r in car.Rents.OrderBy(x => x.StartDate))

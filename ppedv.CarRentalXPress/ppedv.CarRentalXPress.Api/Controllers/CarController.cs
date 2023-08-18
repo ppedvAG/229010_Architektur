@@ -10,13 +10,13 @@ namespace ppedv.CarRentalXPress.Api.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork unitOfWork;
 
         CarMapper mapper = new CarMapper();
 
-        public CarController(IRepository repo)
+        public CarController(IUnitOfWork uow)
         {
-            this.repo = repo;
+            this.unitOfWork = uow;
         }
 
 
@@ -24,38 +24,38 @@ namespace ppedv.CarRentalXPress.Api.Controllers
         [HttpGet]
         public IEnumerable<CarDTO> Get()
         {
-            return repo.GetAll<Car>().ToList().Select(x => mapper.MapToDTO(x));
+            return unitOfWork.CarRepository.GetAll().ToList().Select(x => mapper.MapToDTO(x));
         }
 
         // GET api/<CarController>/5
         [HttpGet("{id}")]
         public CarDTO Get(int id)
         {
-            return mapper.MapToDTO(repo.GetById<Car>(id));
+            return mapper.MapToDTO(unitOfWork.CarRepository.GetById(id));
         }
 
         // POST api/<CarController>
         [HttpPost]
         public void Post([FromBody] CarDTO value)
         {
-            repo.Add(mapper.MapToEntity(value));
-            repo.SaveAll();
+            unitOfWork.CarRepository.Add(mapper.MapToEntity(value));
+            unitOfWork.SaveAll();
         }
 
         // PUT api/<CarController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CarDTO value)
         {
-            repo.Update(mapper.MapToEntity(value));
-            repo.SaveAll();
+            unitOfWork.CarRepository.Update(mapper.MapToEntity(value));
+            unitOfWork.SaveAll();
         }
 
         // DELETE api/<CarController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            repo.Delete<Car>(repo.GetById<Car>(id));
-            repo.SaveAll();
+            unitOfWork.CarRepository.Delete(unitOfWork.CarRepository.GetById(id));
+            unitOfWork.SaveAll();
         }
     }
 }

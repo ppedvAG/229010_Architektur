@@ -20,23 +20,24 @@ string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Test
 
 //DI per AutoFac
 var containerBuilder = new ContainerBuilder();
-containerBuilder.Register(x => new CarRentalXPressContextRepositoryAdapter(conString)).As<IRepository>();
+containerBuilder.Register(x => new CarRentalXPressContextUnitOfWorkAdapter(conString)).As<IUnitOfWork>();
 containerBuilder.RegisterType<RentServices>().As<IRentServices>();
 var container = containerBuilder.Build();
 
-IRepository repo = container.Resolve<IRepository>();
+IUnitOfWork uow = container.Resolve<IUnitOfWork>();
 
 //manual injection
 //IRepository repo = new ppedv.CarRentalXPress.Data.EfCore.CarRentalXPressContextRepositoryAdapter(conString);
 //var rentService = new RentServices(repo);
 var rentService = container.Resolve<IRentServices>();
 
-var demoService = new DemoService(repo);
+var demoService = new DemoService(uow);
 //demoService.CreateDemoDaten();
 
+ //uow.CarRepository.GetAllTheSpecialCars();
 
 Console.WriteLine("All Cars:");
-foreach (var car in repo.Query<Car>().Where(x => x.KW > 5).OrderBy(x => x.Color).ToList())
+foreach (var car in uow.CarRepository.Query().Where(x => x.KW > 5).OrderBy(x => x.Color).ToList())
 {
     Console.WriteLine($"{car.Manufacturer} {car.Model} {car.Color} {car.KW}");
     foreach (var r in car.Rents.OrderBy(x => x.StartDate))

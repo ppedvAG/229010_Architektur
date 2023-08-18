@@ -5,7 +5,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
 {
     public class SaveCommand : ICommand
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork uow;
 
         public event EventHandler? CanExecuteChanged;
 
@@ -14,14 +14,14 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
             return true;
         }
 
-        public SaveCommand(IRepository repo)
+        public SaveCommand(IUnitOfWork uow)
         {
-            this.repo = repo;
+            this.uow = uow;
         }
 
         public void Execute(object? parameter)
         {
-            repo.SaveAll();
+            uow.SaveAll();
         }
     }
 }

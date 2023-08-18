@@ -5,21 +5,21 @@ namespace ppedv.CarRentalXPress.Core
 {
     public class RentServices : IRentServices
     {
-        private readonly IRepository repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public RentServices(IRepository repository)
+        public RentServices(IUnitOfWork unitOfWork)
         {
-            this.repository = repository;
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Car> GetAvailableCars(DateTime day, string location)
         {
             // Get all cars from the repository
-            IEnumerable<Car> allCars = repository.GetAll<Car>();
+            IEnumerable<Car> allCars = unitOfWork.CarRepository.GetAll();
 
             // Get rented cars for the specified day and location from the repository
-            IEnumerable<Car> rentedCarsForDayAndLocation = repository
-                .Query<Rent>()
+            IEnumerable<Car> rentedCarsForDayAndLocation = unitOfWork
+                .RentRepository.Query()
                 .Where(rent =>
                     rent.StartDate.Date <= day.Date && rent.EndDate.Date >= day.Date &&
                     rent.StartLocation == location)

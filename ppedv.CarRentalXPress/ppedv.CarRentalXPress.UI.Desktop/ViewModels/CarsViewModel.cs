@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using ppedv.CarRentalXPress.Core;
 using ppedv.CarRentalXPress.Model;
 using ppedv.CarRentalXPress.Model.Contracts;
 using System.Collections.ObjectModel;
@@ -11,24 +10,28 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
 {
     public class CarsViewModel : ObservableObject
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork unitOfWork;
         private Car selectedCar;
 
-        public CarsViewModel(IRepository repo, IRentServices rentService)
+        public CarsViewModel(IUnitOfWork uow, IRentServices rentService)
         {
-            this.repo = repo;
-            CarList = new ObservableCollection<Car>(repo.GetAll<Car>());
+            this.unitOfWork = uow;
+            CarList = new ObservableCollection<Car>(uow.CarRepository.GetAll());
 
             //SaveCommand = new SaveCommand(repo);
-            SaveCommand = new RelayCommand(() => repo.SaveAll());
+            SaveCommand = new RelayCommand(() =>
+            {
+                uow.SaveAll();
+                uow = App.Current.Services.GetService<IUnitOfWork>();
+            });
             NewCommand = new RelayCommand(UserWantsToAddNewCar);
             DeleteCommand = new RelayCommand(UserWantsToDeleteSelectedCar);
-            
+
             //IRentServices rentService = App.Current.Services.GetService<IRentServices>();
             ShowOnlyAvailableCarsCommand = new RelayCommand(() =>
             {
                 CarList.Clear();
-                rentService.GetAvailableCars(new DateTime(2023,10,11), "Heidelberg").ToList().ForEach(car => CarList.Add(car));
+                rentService.GetAvailableCars(new DateTime(2023, 10, 11), "Heidelberg").ToList().ForEach(car => CarList.Add(car));
             });
         }
 
@@ -36,7 +39,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
         {
             if (selectedCar != null)
             {
-                repo.Delete(selectedCar);
+                unitOfWork.CarRepository.Delete(selectedCar);
                 CarList.Remove(selectedCar);
             }
         }
@@ -44,7 +47,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop.ViewModels
         private void UserWantsToAddNewCar()
         {
             var car = new Car() { Color = "NEU", Manufacturer = "NEU", Model = "NEU", KW = 12 };
-            repo.Add(car);
+            unitOfWork.CarRepository.Add(car);
             CarList.Add(car);
             SelectedCar = car;
         }

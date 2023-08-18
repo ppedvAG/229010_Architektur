@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true";
-builder.Services.AddScoped<IRepository>(x => new ppedv.CarRentalXPress.Data.EfCore.CarRentalXPressContextRepositoryAdapter(conString));
+builder.Services.AddScoped<IUnitOfWork>(x => new ppedv.CarRentalXPress.Data.EfCore.CarRentalXPressContextUnitOfWorkAdapter(conString));
 
 var app = builder.Build();
 

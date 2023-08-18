@@ -41,7 +41,7 @@ namespace ppedv.CarRentalXPress.UI.Desktop
 
             string conString = "Server=(localdb)\\mssqllocaldb;Database=CarRentalXPress_Tests;Trusted_Connection=true";
 
-            services.AddSingleton<IRepository>(new CarRentalXPressContextRepositoryAdapter(conString));
+            services.AddSingleton<IUnitOfWork>(new CarRentalXPressContextUnitOfWorkAdapter(conString));
             services.AddSingleton<CarsViewModel>();
             services.AddSingleton<IRentServices, RentServices>();
 

@@ -6,11 +6,11 @@ namespace ppedv.CarRentalXPress.Core
 {
     public class DemoService
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork unitOfWork;
 
-        public DemoService(IRepository repo)
+        public DemoService(IUnitOfWork unitOfWork)
         {
-            this.repo = repo;
+            this.unitOfWork = unitOfWork;
         }
 
         public void CreateDemoDaten()
@@ -20,9 +20,9 @@ namespace ppedv.CarRentalXPress.Core
             var rents = GenerateRents(cars, customers, 20);
             foreach (var r in rents)
             {
-                repo.Add(r);
+                unitOfWork.RentRepository.Add(r);
             }
-            repo.SaveAll();
+            unitOfWork.SaveAll();
         }
 
         const string local = "de";
